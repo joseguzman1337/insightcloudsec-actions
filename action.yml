@@ -28,7 +28,7 @@ inputs:
     description: Path to write report files
     required: false
     default: "./"
-  files-to-scan:
+  files_to_scan:
     description: File(s) to scan
     required: false
     default: "./[^.git]*"
@@ -47,7 +47,7 @@ runs:
     MIMICS_API_KEY: ${{ inputs.api_key }}
   args:
     - scan
-    - ${{ inputs.files-to-scan }}
+    - ${{ inputs.files_to_scan }}
     - -c
     - ${{ inputs.config_name }}
     - --log-level
