@@ -33,7 +33,7 @@ inputs:
     required: false
     default: "./[^.git]*"
   scan_target:
-    description: Override the default scan target identifier used for exception filtering
+    description: Scan target identifier used for exception filtering
     required: false
     default: Github Action Scan
 outputs:

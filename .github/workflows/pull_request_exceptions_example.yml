@@ -16,6 +16,7 @@ jobs:
           api_key: ${{ secrets.ics_api_key }}
           base_url: ${{ secrets.ics_base_url }}
           config_name: AWS CIS Benchmark 1.4
+          scan_target: Development # Scan target identifier for exception filtering
       - name: Attach scan artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -24,8 +25,3 @@ jobs:
           path: |
             ./log/mimics*.log
             ./ics_scan.*
-      - name: Upload SARIF file
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ics_scan.sarif

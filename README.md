@@ -1,4 +1,3 @@
-![insightCloudSec](https://www.rapid7.com/globalassets/_logos/png/insightcloudsec-b-c.png)
 # insightCloudSec Scan
 The [insightCloudSec Scan](https://docs.divvycloud.com/docs/iac-cli-scanning-tool) Github Action allows security and development teams to integrate infrastructure-as-code (IaC) scanning in their CI/CD pipelines.
 
@@ -26,6 +25,9 @@ Read how to set secrets here: https://docs.github.com/en/actions/security-guides
 
     # Optional file(s) to scan (default: all files in the repository excluding the .git/ directory)
     target: ./[^.git]*
+
+    # Optional: Scan target identifier used for exception filtering (default: "Github Action Scan")
+    scan_target: "Github Action Scan"
 ```
 
 An example workflow may look like this:
@@ -60,7 +62,7 @@ jobs:
       # the following is optional but recommended to surface results to Github Advanced Security
       - name: Upload the sarif report to Github Advanced Security
         if: always()
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: ics_scan.sarif
 ```
