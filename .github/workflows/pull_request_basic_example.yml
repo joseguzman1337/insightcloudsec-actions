@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches:
-      - master
+      # Update this to match your repository's branch
       - main
 
 jobs:

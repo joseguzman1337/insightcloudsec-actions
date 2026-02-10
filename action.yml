@@ -28,10 +28,14 @@ inputs:
     description: Path to write report files
     required: false
     default: "./"
-  target:
+  files_to_scan:
     description: File(s) to scan
     required: false
     default: "./[^.git]*"
+  scan_target:
+    description: Scan target identifier used for exception filtering
+    required: false
+    default: Github Action Scan
 outputs:
   stdout:
     description: Output of the mimics scan command
@@ -43,7 +47,7 @@ runs:
     MIMICS_API_KEY: ${{ inputs.api_key }}
   args:
     - scan
-    - ${{ inputs.target }}
+    - ${{ inputs.files_to_scan }}
     - -c
     - ${{ inputs.config_name }}
     - --log-level
@@ -54,3 +58,5 @@ runs:
     - ${{ inputs.report_path }}
     - --report-formats
     - ${{ inputs.report_formats }}
+    - --scan-target
+    - ${{ inputs.scan_target }}
